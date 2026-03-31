@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tasks – Taskflow</title>
+    <meta name="description" content="View and manage all your tasks." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <!-- Django: {% include "partials/navbar.html" %} -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">
+            <div class="brand-icon">✦</div>
+            Taskflow
+        </a>
+        <div class="navbar-actions">
+            <a href="index.html" class="nav-link active">Tasks</a>
+            <a href="task_create.html" class="btn btn-primary btn-sm">＋ New Task</a>
+        </div>
+    </nav>
+
+    <!-- ========== MAIN ========== -->
+    <main class="page-container">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="page-header-left">
+                <h1 class="page-title">My Tasks</h1>
+                <p class="page-subtitle">Manage and track your daily work</p>
+            </div>
+            <a href="task_create.html" class="btn btn-primary">＋ New Task</a>
+        </div>
+
+        <!-- Django: {% if messages %} ... {% endif %} -->
+        <!-- <div class="alert alert-success">✓ Task deleted successfully.</div> -->
+
+        <!-- Stats Row -->
+        <div class="stats-row">
+            <div class="stat-card total">
+                <div class="stat-value">5</div>
+                <!-- Django: {{ total_count }} -->
+                <div class="stat-label">Total</div>
+            </div>
+            <div class="stat-card active">
+                <div class="stat-value">3</div>
+                <!-- Django: {{ active_count }} -->
+                <div class="stat-label">Active</div>
+            </div>
+            <div class="stat-card completed">
+                <div class="stat-value">2</div>
+                <!-- Django: {{ completed_count }} -->
+                <div class="stat-label">Completed</div>
+            </div>
+        </div>
+
+        <!-- Task Table Card -->
+        <div class="card">
+
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <!-- Django: ?status=all / active / completed -->
+                    <a href="index.html" class="filter-chip active">All</a>
+                    <a href="index.html?status=active" class="filter-chip">Active</a>
+                    <a href="index.html?status=completed" class="filter-chip">Completed</a>
+                </div>
+                <div class="filter-group">
+                    <!-- Django: ?priority=high ... -->
+                    <a href="index.html?priority=high" class="filter-chip">🔴 High</a>
+                    <a href="index.html?priority=medium" class="filter-chip">🟡 Medium</a>
+                    <a href="index.html?priority=low" class="filter-chip">🟢 Low</a>
+                </div>
+            </div>
+
+            <!-- Task Table -->
+            <!-- Django: {% if tasks %} -->
+            <div class="task-table-wrap">
+                <table class="task-table">
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Priority</th>
+                            <th>Due Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Django: {% for task in tasks %} -->
+
+                        <tr>
+                            <td class="task-title-cell">
+                                <a href="task_detail.html" class="task-title-link">Design the landing page</a>
+                            </td>
+                            <td><span class="badge badge-high">High</span></td>
+                            <td class="due-cell overdue">Mar 1, 2026</td>
+                            <td><span class="badge badge-active">Active</span></td>
+                            <td>
+                                <div class="task-actions-cell">
+                                    <a href="task_detail.html" class="btn btn-ghost btn-sm btn-icon" title="View">👁</a>
+                                    <a href="task_edit.html" class="btn btn-ghost btn-sm btn-icon" title="Edit">✎</a>
+                                    <a href="task_delete.html" class="btn btn-ghost btn-sm btn-icon" title="Delete"
+                                        style="color:var(--red);">✕</a>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="task-title-cell">
+                                <a href="task_detail.html" class="task-title-link">Review pull requests</a>
+                            </td>
+                            <td><span class="badge badge-medium">Medium</span></td>
+                            <td class="due-cell">Mar 5, 2026</td>
+                            <td><span class="badge badge-active">Active</span></td>
+                            <td>
+                                <div class="task-actions-cell">
+                                    <a href="task_detail.html" class="btn btn-ghost btn-sm btn-icon" title="View">👁</a>
+                                    <a href="task_edit.html" class="btn btn-ghost btn-sm btn-icon" title="Edit">✎</a>
+                                    <a href="task_delete.html" class="btn btn-ghost btn-sm btn-icon" title="Delete"
+                                        style="color:var(--red);">✕</a>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="task-title-cell">
+                                <a href="task_detail.html" class="task-title-link">Write unit tests for auth module</a>
+                            </td>
+                            <td><span class="badge badge-high">High</span></td>
+                            <td class="due-cell">Mar 7, 2026</td>
+                            <td><span class="badge badge-active">Active</span></td>
+                            <td>
+                                <div class="task-actions-cell">
+                                    <a href="task_detail.html" class="btn btn-ghost btn-sm btn-icon" title="View">👁</a>
+                                    <a href="task_edit.html" class="btn btn-ghost btn-sm btn-icon" title="Edit">✎</a>
+                                    <a href="task_delete.html" class="btn btn-ghost btn-sm btn-icon" title="Delete"
+                                        style="color:var(--red);">✕</a>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="task-title-cell done">
+                                Set up CI/CD pipeline
+                            </td>
+                            <td><span class="badge badge-medium">Medium</span></td>
+                            <td class="due-cell">Feb 25, 2026</td>
+                            <td><span class="badge badge-completed">Completed</span></td>
+                            <td>
+                                <div class="task-actions-cell">
+                                    <a href="task_detail.html" class="btn btn-ghost btn-sm btn-icon" title="View">👁</a>
+                                    <a href="task_edit.html" class="btn btn-ghost btn-sm btn-icon" title="Edit">✎</a>
+                                    <a href="task_delete.html" class="btn btn-ghost btn-sm btn-icon" title="Delete"
+                                        style="color:var(--red);">✕</a>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="task-title-cell done">
+                                Update project README
+                            </td>
+                            <td><span class="badge badge-low">Low</span></td>
+                            <td class="due-cell">Feb 20, 2026</td>
+                            <td><span class="badge badge-completed">Completed</span></td>
+                            <td>
+                                <div class="task-actions-cell">
+                                    <a href="task_detail.html" class="btn btn-ghost btn-sm btn-icon" title="View">👁</a>
+                                    <a href="task_edit.html" class="btn btn-ghost btn-sm btn-icon" title="Edit">✎</a>
+                                    <a href="task_delete.html" class="btn btn-ghost btn-sm btn-icon" title="Delete"
+                                        style="color:var(--red);">✕</a>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Django: {% endfor %} -->
+                    </tbody>
+                </table>
+            </div>
+            <!-- Django: {% else %} -->
+            <!--
+      <div class="empty-state">
+        <div class="empty-icon">🌿</div>
+        <div class="empty-title">No tasks yet</div>
+        <div class="empty-sub">Create your first task to get started</div>
+        <a href="task_create.html" class="btn btn-primary">＋ New Task</a>
+      </div>
+      -->
+            <!-- Django: {% endif %} -->
+
+        </div><!-- /.card -->
+    </main>
+
+</body>
+
+</html>
