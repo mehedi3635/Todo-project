@@ -1,4 +1,7 @@
+{% load static %}
 <!DOCTYPE html>
+
+
 <html lang="en">
 
 <head>
@@ -10,13 +13,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 </head>
 
 <body>
 
     <!-- ========== NAVBAR ========== -->
-    <!-- Django: {% include "partials/navbar.html" %} -->
+    {% include "todo-app/navbar.html" %} 
     <nav class="navbar">
         <a href="index.html" class="navbar-brand">
             <div class="brand-icon">✦</div>
